@@ -60,7 +60,7 @@ def plotTrainingLossAndAccuracy(modelHistory):
 	plt.xlabel("Epoch #")
 	plt.ylabel("Loss/Accuracy")
 	plt.legend(loc="lower left")
-	plt.savefig("plots\\plot7.png")
+	plt.savefig("plots\\plot8.png")
 # define cnn model
 
 def define_model():
@@ -84,7 +84,7 @@ def define_model():
 
 modelDirectory = 'D:\\8th_semester\\my_8th_semester\\Machine_Learning\\models'
 
-modelName = os.path.join(modelDirectory, 'customModel7.model')
+modelName = os.path.join(modelDirectory, 'customModel8.model')
 
 mainModel = define_model()
 print(type(trainGenerator))

@@ -25,9 +25,9 @@ def run_example(i):
 	# load the image
 	# pp="D:\\8th_semester\\my_8th_semester\\Machine_Learning\\data\\Photos\\Photos\\"+str(i)+".jpg"
 	# pp="D:\\8th_semester\\my_8th_semester\\Machine_Learning\\data\\digits\\"+str(i)+".jpg"
-	# pp="D:\\8th_semester\\my_8th_semester\\Machine_Learning\\data\\0-9numbers\\0-9numbers\\"+str(i)+".jpg"
+	pp="D:\\8th_semester\\my_8th_semester\\Machine_Learning\\data\\0-9numbers\\0-9numbers\\"+str(i)+"_converted"+".jpg"
 	# pp="dataset (Bengali handwritten digit recognition)-20210410T171203Z-001\\2_two\\nipu_dgt_2__233.tif"
-	pp ="BDNet-master\\BDNet-master\\own\\own\\data\\nipu_dgt_0__53.jpg"
+	# pp ="BDNet-master\\BDNet-master\\own\\own\\data\\nipu_dgt_5__85.jpg"
 	img = load_image(pp)
 	# load model
 	model = load_model('models\\customModel7.model')
@@ -36,7 +36,7 @@ def run_example(i):
 	predictions = model.predict(img)
 	# print(predictions)
 	result= np.argmax(model.predict(img))
-	print(str(i)+" "+str(result))
+	print(str(i)+str(result))
  
 # entry point, run the example
 for i in range(0,10):
