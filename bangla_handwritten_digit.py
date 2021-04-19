@@ -8,7 +8,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.python.keras.callbacks import ModelCheckpoint, EarlyStopping
 import os
 
-image_width, image_height = 28 , 28
+image_width, image_height = 28, 28
 train_data_directory = 'D:\\8th_semester\\my_8th_semester\\Machine_Learning\\dataset (Bengali handwritten digit recognition)-20210410T171203Z-001'
 
 batch_size = 16
@@ -39,29 +39,31 @@ validationGenerator = dataGenerator.flow_from_directory(
     subset="validation",
     class_mode="categorical"
 )
+
+
 # define cnn model
 def define_model():
-	model = Sequential()
-	model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', input_shape=(28, 28, 1)))
-	model.add(MaxPooling2D((2, 2)))
-	model.add(Flatten())
-	model.add(Dense(100, activation='relu', kernel_initializer='he_uniform'))
-	model.add(Dense(10, activation='softmax'))
-	# compile model
-	opt = SGD(lr=0.01, momentum=0.9)
-	model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
-	return model
+    model = Sequential()
+    model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', input_shape=(28, 28, 1)))
+    model.add(MaxPooling2D((2, 2)))
+    model.add(Flatten())
+    model.add(Dense(100, activation='relu', kernel_initializer='he_uniform'))
+    model.add(Dense(10, activation='softmax'))
+    # compile model
+    opt = SGD(lr=0.01, momentum=0.9)
+    model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
+    return model
 
 
 modelDirectory = 'D:\\8th_semester\\my_8th_semester\\Machine_Learning\\dataset (Bengali handwritten digit recognition)-20210410T171203Z-001'
 
-modelName = os.path.join(modelDirectory, 'customModel.model')
+modelName = os.path.join(modelDirectory, 'models/customModel.model')
 
 mainModel = define_model()
 print(type(trainGenerator))
 modelHistory = mainModel.fit(trainGenerator,
                              steps_per_epoch=batch_size,
-                             epochs=epochs, 
+                             epochs=epochs,
                              validation_data=validationGenerator)
 
 mainModel.save(modelName, save_format="h5")
